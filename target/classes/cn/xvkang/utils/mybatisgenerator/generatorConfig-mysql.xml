@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0-SNAPSHOT//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 根据表 自动生成实体类和Mapper #java -cp ./:./ojdbc6-11.2.0.jar:./mybatis-generator-core-oracle-1.3.6.jar 
+	org.mybatis.generator.api.ShellRunner -configfile ./generatorConfig-oracle.xml 
+	-overwrite -->
+<generatorConfiguration>
+	<context id="mysql" targetRuntime="MyBatis3">
+		<!-- <commentGenerator type="com.fh.util.mybatisgenerator.CustomRemarksCommentGenerator"></commentGenerator> -->
+
+		<commentGenerator
+			type="cn.xvkang.utils.mybatisgenerator.MysqlCommentGenerator"></commentGenerator>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8"
+			userId="root" password="wujiatong">
+			<property name="remarksReporting" value="true"></property>
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<!-- <property name="forceBigDecimals" value="false" /> -->
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="cn.xvkang.dto"
+			targetProject="/Volumes/mac-bak/main-workspace/eclipse-workspace/ssm/ssm-mybatis-plus/src/main/java/">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="/Volumes/mac-bak/main-workspace/eclipse-workspace/ssm/ssm-mybatis-plus/src/main/resources/mybatis/">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="cn.xvkang.mapper"
+			targetProject="/Volumes/mac-bak/main-workspace/eclipse-workspace/ssm/ssm-mybatis-plus/src/main/java/">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table tableName="person">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="MySql"
+				identity="true" />
+		</table>
+		<!-- <table tableName="SYS_USER"> <property name="useActualColumnNames" 
+			value="false" /> </table> -->
+
+	</context>
+</generatorConfiguration>
